@@ -1,1 +1,37 @@
-<p>signup works!</p>
+<div class="container d-flex justify-content-center">
+    <form  #form="ngForm" (ngSubmit)="onSignupSubmit(form)">   
+    <mat-list class="border">
+        <input
+            [(ngModel)]="signUpRequest.username"
+            #usernameTextField="ngModel"
+            required
+            minlength="2"
+            name="username"
+            class="input"
+            type="text"
+            placeholder="Type username here"
+          />
+          <input
+            [(ngModel)]="signUpRequest.email"
+            #emailTextField="ngModel"
+            required
+            minlength="2"
+            name="email"
+            class="input"
+            type="email"
+            placeholder="Type todo text here..."
+          />
+          <input
+            [(ngModel)]="signUpRequest.password"
+            #passwordTextField="ngModel"
+            required
+            minlength="2"
+            name="password"
+            class="input"
+            type="password"
+            placeholder="Type todo text here..."
+          />
+    
+    </mat-list>
+</form>
+</div>

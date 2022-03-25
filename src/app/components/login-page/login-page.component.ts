@@ -15,7 +15,6 @@ export class LoginPageComponent implements OnInit {
   constructor(private listService: ListServiceService) { }
 
   ngOnInit(): void {
-    this.listService.getList("Fashion-list-1.js").subscribe((data) => (this.List = data));
   }
 
 }
