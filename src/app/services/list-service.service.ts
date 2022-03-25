@@ -9,12 +9,10 @@ import { Observable } from 'rxjs';
 export class ListServiceService {
 
 private getUrl: string = 'https://www.ideallista.net/playlist/js/';
-private urlBypass: string = 'https://cors-anywhere.herokuapp.com/';
+
 
   constructor(private _httpClient: HttpClient) { }
 
-getList(name: String): Observable<Song[]>{
-  return this._httpClient.get<Song[]>(this.urlBypass + this.getUrl + name);
-}
+
 
 }
