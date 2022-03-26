@@ -1,1 +1,18 @@
-<p>audio-player works!</p>
+
+<div class="container">
+<ngx-audio-player
+  [playlist]="msaapPlaylist"
+  [displayTitle]="msaapDisplayTitle"
+  [autoPlay]="false"
+  muted="muted"
+  [displayPlaylist]="msaapDisplayPlayList"
+  [pageSizeOptions]="msaapPageSizeOptions"
+  [displayVolumeControls]="msaapDisplayVolumeControls"
+  [displayRepeatControls]="msaapDisplayRepeatControls"
+  [disablePositionSlider]="msaapDisablePositionSlider"
+  [displayArtist]="msaapDisplayArtist"
+  [displayDuration]="msaapDisplayDuration"
+  [expanded]="true"
+></ngx-audio-player>
+
+</div>

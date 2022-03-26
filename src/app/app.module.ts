@@ -9,7 +9,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { NgxAudioPlayerModule } from 'ngx-audio-player';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -22,6 +24,8 @@ import { AudioPlayerComponent } from './components/audio-player/audio-player.com
 import { SearchPageComponent } from './components/search-page/search-page.component';
 import { SearchResultComponent } from './components/search-page/search-result/search-result.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NavbarComponent } from './components/navigation/navbar/navbar.component';
+import { SidebarComponent } from './components/navigation/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +36,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BeginPageComponent,
     AudioPlayerComponent,
     SearchPageComponent,
-    SearchResultComponent
+    SearchResultComponent,
+    NavbarComponent,
+    SidebarComponent
 
   ],
   imports: [
@@ -49,6 +55,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatIconModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxAudioPlayerModule,
+    MatToolbarModule,
+    MatSidenavModule
 
   ],
   providers: [],

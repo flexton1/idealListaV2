@@ -1,6 +1,28 @@
-aa
-<div *ngFor="let song of List">
-
-<p>{{song.title}}</p>
-
+<div class="container d-flex justify-content-center">
+    <form  #form="ngForm" (ngSubmit)="onLoginSubmit(form)">   
+    <mat-list class="d-flex flex-column justify-content-center align-items-center">
+      <p>Login na platformu</p>
+        <input
+            [(ngModel)]="loginRequest.username"
+            #usernameTextField="ngModel"
+            required
+            minlength="2"
+            name="username"
+            class="form-control"
+            type="text"
+            placeholder="Korisničko ime"
+          />
+          <input
+            [(ngModel)]="loginRequest.password"
+            #passwordTextField="ngModel"
+            required
+            minlength="2"
+            name="password"
+            class="form-control"
+            type="password" 
+            placeholder="Password"
+          />
+    <button class="btn btn-primary" type="submit">submit</button>
+    </mat-list>
+</form>
 </div>

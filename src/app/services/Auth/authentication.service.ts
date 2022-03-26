@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { LoginRequest } from 'src/app/model/login-request';
 import { SignupRequest } from 'src/app/model/signup-request';
 
 @Injectable({
@@ -12,5 +13,9 @@ export class AuthenticationService {
 
   signup(signupRequest: SignupRequest){
     return this._httpClient.post<SignupRequest>(this.getUrl + "signup", signupRequest);
+  }
+
+  login(loginRequest: LoginRequest){
+    return this._httpClient.post<LoginRequest>(this.getUrl + "login", loginRequest);
   }
 }

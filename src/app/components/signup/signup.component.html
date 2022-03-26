@@ -1,15 +1,16 @@
 <div class="container d-flex justify-content-center">
     <form  #form="ngForm" (ngSubmit)="onSignupSubmit(form)">   
-    <mat-list class="border">
+    <mat-list class="d-flex flex-column justify-content-center align-items-center">
+      <p>Registracija na IdealListu</p>
         <input
             [(ngModel)]="signUpRequest.username"
             #usernameTextField="ngModel"
             required
             minlength="2"
             name="username"
-            class="input"
+            class="form-control"
             type="text"
-            placeholder="Type username here"
+            placeholder="Korisničko ime"
           />
           <input
             [(ngModel)]="signUpRequest.email"
@@ -17,9 +18,9 @@
             required
             minlength="2"
             name="email"
-            class="input"
+            class="form-control"
             type="email"
-            placeholder="Type todo text here..."
+            placeholder="Email"
           />
           <input
             [(ngModel)]="signUpRequest.password"
@@ -27,11 +28,11 @@
             required
             minlength="2"
             name="password"
-            class="input"
-            type="password"
-            placeholder="Type todo text here..."
+            class="form-control"
+            type="password" 
+            placeholder="Password"
           />
-    
+    <button class="btn btn-primary" type="submit">submit</button>
     </mat-list>
 </form>
 </div>
