@@ -1,0 +1,13 @@
+
+<div class="myStyle container d-flex flex-column">
+    <mat-card class="style-mat-card">   
+    <mat-card-actions>  
+        <button mat-button color="warn" class="btn btn-primary" (click)="onClick()">  
+            <mat-icon>file_upload</mat-icon>  
+            Upload  
+        </button>  
+    </mat-card-actions>  
+</mat-card><input type="file" #fileUpload id="fileUpload" name="fileUpload" multiple="multiple" accept="audio/*" style="display:none;" />
+<span >{{fileName}}</span>
+</div>
+       

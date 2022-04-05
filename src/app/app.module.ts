@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatMenuModule } from '@angular/material/menu'
 import { MatCardModule } from '@angular/material/card'
@@ -13,12 +13,9 @@ import { NgxAudioPlayerModule } from 'ngx-audio-player';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 
-
+import { NgxWebstorageModule } from 'ngx-webstorage';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginPageComponent } from './components/login-page/login-page.component';
-import { SignupComponent } from './components/signup/signup.component';
-import { LoginComponent } from './components/login/login.component';
 import { BeginPageComponent } from './components/begin-page/begin-page.component';
 import { AudioPlayerComponent } from './components/audio-player/audio-player.component';
 import { SearchPageComponent } from './components/search-page/search-page.component';
@@ -26,19 +23,26 @@ import { SearchResultComponent } from './components/search-page/search-result/se
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './components/navigation/navbar/navbar.component';
 import { SidebarComponent } from './components/navigation/sidebar/sidebar.component';
+import { UserProfileComponent } from './auth/user-profile/user-profile.component';
+import { SignupComponent } from './auth/signup/signup.component';
+import { LoginComponent } from './auth/login/login.component';
+import { FileUploadComponent } from './components/file-upload/file-upload.component';
+import { TokenInterceptor } from './token-interceptor';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginPageComponent,
-    SignupComponent,
-    LoginComponent,
     BeginPageComponent,
     AudioPlayerComponent,
     SearchPageComponent,
     SearchResultComponent,
     NavbarComponent,
-    SidebarComponent
+    SidebarComponent,
+    FileUploadComponent,
+    UserProfileComponent,
+    LoginComponent,
+    SignupComponent
 
   ],
   imports: [
@@ -57,10 +61,18 @@ import { SidebarComponent } from './components/navigation/sidebar/sidebar.compon
     ReactiveFormsModule,
     NgxAudioPlayerModule,
     MatToolbarModule,
-    MatSidenavModule
+    MatSidenavModule,
+    ToastrModule.forRoot(),
+    NgxWebstorageModule.forRoot(),
 
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

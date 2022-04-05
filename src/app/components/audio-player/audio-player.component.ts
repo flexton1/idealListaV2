@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Track } from 'ngx-audio-player';
+import { ListServiceService } from 'src/app/services/list-service.service';
 
 @Component({
   selector: 'app-audio-player',
@@ -8,9 +9,13 @@ import { Track } from 'ngx-audio-player';
 })
 export class AudioPlayerComponent implements OnInit {
 
-  constructor() { }
+  constructor(private listService: ListServiceService ) { }
 
-  ngOnInit(): void {
+  
+  msaapPlaylist: Track[] = [];
+ 
+  ngOnInit() {
+    this.listService.getSongs().subscribe(e => this.msaapPlaylist = e);
   }
 
   msaapDisplayTitle = true;
@@ -22,25 +27,7 @@ msaapDisplayArtist = true;
 msaapDisplayDuration = false;
 msaapDisablePositionSlider = true;
    
-// Material Style Advance Audio Player Playlist
-msaapPlaylist: Track[] = [
-  {
-    title: 'Audio One Title',
-    link: 'Link to Audio One URL',
-    artist: 'Audio One Artist',
-    duration: 150
-  },
-  {
-    title: 'Audio Two Title',
-    link: 'Link to Audio Two URL',
-    artist: 'Audio Two Artist',
-    duration: 150
-  },
-  {
-    title: 'Audio Three Title',
-    link: 'Link to Audio Three URL',
-    artist: 'Audio Three Artist',
-    duration: 150
-  },
-];
+
+
+
 }

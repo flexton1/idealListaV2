@@ -1,4 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth/shared/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,12 +11,28 @@ export class NavbarComponent implements OnInit {
 
   @Output() public sidenavToggle = new EventEmitter();
   
-  constructor() { }
+  isLoggedIn: boolean;
+  username: string;
+  constructor(private authService: AuthService,
+    private router: Router) { }
 
-  ngOnInit(): void {
-    
+  ngOnInit() {
+    this.authService.loggedIn.subscribe((data: boolean) => this.isLoggedIn = data);
+    this.authService.username.subscribe((data: string) => this.username = data);
+    this.isLoggedIn = this.authService.isLoggedIn();
+    this.username = this.authService.getUserName();
   }
   public onToggleSidenav = () => {
     this.sidenavToggle.emit();};
+    
+    logout() {
+      this.authService.logout();
+      this.isLoggedIn = false;
+      this.router.navigateByUrl('');
+    }
+
+    goToUserProfile() {
+      this.router.navigateByUrl('/user-profile/' + this.username);
+    }
 
 }
