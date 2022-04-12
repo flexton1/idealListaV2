@@ -23,9 +23,9 @@ msaapDisplayPlayList = true;
 msaapPageSizeOptions = [4,6,10, 12, 15];
 msaapDisplayVolumeControls = true;
 msaapDisplayRepeatControls = true;
-msaapDisplayArtist = true;
+msaapDisplayArtist = false;
 msaapDisplayDuration = false;
-msaapDisablePositionSlider = true;
+msaapDisablePositionSlider = false;
    
 
 
