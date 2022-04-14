@@ -1,13 +1,15 @@
 
 <div class="myStyle container d-flex flex-column">
-    <mat-card class="style-mat-card">   
+    <mat-card class="style-mat-card d-inline-flex justify-content-center flex-wrap">   
     <mat-card-actions>  
         <button mat-button color="warn" class="btn btn-primary" (click)="onClick()">  
             <mat-icon>file_upload</mat-icon>  
             Upload  
-        </button>  
+        </button> 
+        <input type="text" #box (keyup)="onKey(box.value)" class="input form-control"> 
     </mat-card-actions>  
-</mat-card><input type="file" #fileUpload id="fileUpload" name="fileUpload" multiple="multiple" accept="audio/*" style="display:none;" />
-<span >{{fileName}}</span>
+</mat-card>
+<input type="file" #fileUpload id="fileUpload" name="fileUpload" multiple="multiple" accept="audio/*" style="display:none;" />
+<span>{{fileName}}</span>
 </div>
        

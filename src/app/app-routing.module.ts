@@ -14,7 +14,7 @@ const routes: Routes = [
 {path: '', component: BeginPageComponent},
 {path: 'user-profile/:name', component: UserProfileComponent, canActivate: [AuthGuard]},
 {path: 'audio', component: AudioPlayerComponent},
-
+{path: 'file-upload', component: FileUploadComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
