@@ -29,6 +29,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
 import { TokenInterceptor } from './token-interceptor';
 import { ToastrModule } from 'ngx-toastr';
+import { SetProfilePictureComponent } from './components/set-profile-picture/set-profile-picture.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { ToastrModule } from 'ngx-toastr';
     FileUploadComponent,
     UserProfileComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    SetProfilePictureComponent
 
   ],
   imports: [

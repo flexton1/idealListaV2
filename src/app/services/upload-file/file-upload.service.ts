@@ -8,7 +8,7 @@ export class FileUploadService {
 
   constructor(private _httpClient: HttpClient) { }
   SERVER_URL: string = "http://localhost:8080/api/files/upload";
-
+  SERVER_URL_PICTURES: string = "http://localhost:8080/api/profileImages"
 
   public upload(formData: any, playlist: string) {
     console.log("upload service function is called")
@@ -18,4 +18,15 @@ export class FileUploadService {
         observe: 'events'  
       });  
   }
+
+  public uploadPicture(formData: any, username: string) {
+    console.log("upload service function is called")
+    console.log(formData)
+    return this._httpClient.post<FormData>(this.SERVER_URL_PICTURES + '/upload' + '/' + username, formData, {  
+        reportProgress: true,  
+        observe: 'events'  
+      });  
+  }
+
+
 }
