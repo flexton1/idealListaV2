@@ -1,20 +1,21 @@
-<div class="container d-flex justify-content-center">
+<div class="container d-flex flex-column justify-content-center">
   <div class="card mb-3" style="width: 80%; height: 30vh;">
     <div class="row no-gutters">
       <div class="col-md-4">
-        <img src="..." class="card-img" alt="...">
+        <img [src]="'http://localhost:8080/api/profileImages/' + name" class="card-img" alt="...">
       </div>
       <div class="col-md-8">
         <div class="card-body">
           <h5 class="card-title">{{name}}</h5>
-          <p class="card-text"> </p>
           <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          <p class="card-text">Promjenite vašu sliku profila:</p>
+          <app-set-profile-picture></app-set-profile-picture>
         </div>
       </div>
     </div>
   </div>
 
-<app-set-profile-picture></app-set-profile-picture>
+
 
 </div>
 

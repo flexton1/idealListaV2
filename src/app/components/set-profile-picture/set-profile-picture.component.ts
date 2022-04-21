@@ -11,57 +11,58 @@ import { FileUploadService } from 'src/app/services/upload-file/file-upload.serv
 export class SetProfilePictureComponent implements OnInit {
 
   @ViewChild("fileUpload", {static: false}) picUpload: ElementRef;
-  files: any[]  = [];  
+  files: any[]  = [];
     fileName: any;
     addToPlaylist: string = "";
     username: string;
-  
+
     constructor(private fileUploadService: FileUploadService,
       private activatedRoute: ActivatedRoute,
-      private authService: AuthService) { 
+      private authService: AuthService) {
      this.username = authService.getUserName();
     }
 
   ngOnInit(){
   }
 
-  onClick() {  
+  onClick() {
     const fileUpload = this.picUpload.nativeElement;
-    fileUpload.onchange = () => {  
-    for (let index = 0; index < fileUpload.files.length; index++)  
-    {  
-     const file = fileUpload.files[index];  
+    fileUpload.onchange = () => {
+    for (let index = 0; index < fileUpload.files.length; index++)
+    {
+     const file = fileUpload.files[index];
       this.fileName = file.name;
-     
-     this.files.push({ data: file, inProgress: false, progress: 0});  
-    }  
-      this.uploadFiles();  
-    };  
-    fileUpload.click();  
+
+     this.files.push({ data: file, inProgress: false, progress: 0});
+    }
+      this.uploadFiles();
+    };
+    fileUpload.click();
 }
 
 
 
-private uploadFiles() {  
-  this.picUpload.nativeElement.value = '';  
-  this.files.forEach(file => {  
+private uploadFiles() {
+  this.picUpload.nativeElement.value = '';
+  this.files.forEach(file => {
     this.uploadFile(file);
-    
+
   })
   this.files = [];
-  
-  ;  
+  return window.location.reload();
+
+  ;
 }
-uploadFile(file: any) {  
-  const formData = new FormData();  
-  formData.append('file', file.data);  
-  file.inProgress = true;  
+uploadFile(file: any) {
+  const formData = new FormData();
+  formData.append('image', file.data);
+  file.inProgress = true;
   this.fileUploadService.uploadPicture(formData, this.username).subscribe(
     rsp => {
       console.log(rsp.type)
 
 
-     
+
 },
     error => {
       console.log(error)

@@ -10,12 +10,14 @@ export class UserProfileComponent implements OnInit {
   name: string;
 
   constructor(private activatedRoute: ActivatedRoute) {
-   
+
     this.name = this.activatedRoute.snapshot.params['name'];
 
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
+
+
   }
 
 }

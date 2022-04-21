@@ -64,7 +64,11 @@ import { SetProfilePictureComponent } from './components/set-profile-picture/set
     NgxAudioPlayerModule,
     MatToolbarModule,
     MatSidenavModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot({
+      timeOut: 2000,
+      positionClass: 'toast-bottom-center',
+      preventDuplicates: true,
+    }),
     NgxWebstorageModule.forRoot(),
 
   ],
