@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from '../shared/auth.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -9,9 +10,10 @@ import { ActivatedRoute } from '@angular/router';
 export class UserProfileComponent implements OnInit {
   name: string;
 
-  constructor(private activatedRoute: ActivatedRoute) {
+  constructor(private activatedRoute: ActivatedRoute,
+      private authService: AuthService) {
 
-    this.name = this.activatedRoute.snapshot.params['name'];
+    this.name = this.authService.getUserName();
 
   }
 
