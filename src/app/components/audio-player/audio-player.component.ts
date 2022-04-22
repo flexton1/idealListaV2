@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Track } from 'ngx-audio-player';
+import { ActivatedRoute } from '@angular/router';
 import { ListServiceService } from 'src/app/services/list-service.service';
+import { Track } from './track';
 
 @Component({
   selector: 'app-audio-player',
@@ -9,13 +10,16 @@ import { ListServiceService } from 'src/app/services/list-service.service';
 })
 export class AudioPlayerComponent implements OnInit {
 
-  constructor(private listService: ListServiceService ) { }
+  constructor(private listService: ListServiceService,
+              private route: ActivatedRoute ) { }
 
   
   msaapPlaylist: Track[] = [];
  
   ngOnInit() {
-    this.listService.getSongs().subscribe(e => this.msaapPlaylist = e);
+    this.listService.getSongs().subscribe(e => this.msaapPlaylist = e.filter(a => 
+      a.playlist !== this.route.snapshot.params['playlist'])
+      );
   }
 
   msaapDisplayTitle = true;

@@ -2,3 +2,8 @@
     font-size: 26px;
     
 }
+
+img {
+    max-width: fit-content;
+    max-height: fit-content;
+}

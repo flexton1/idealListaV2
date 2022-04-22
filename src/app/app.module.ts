@@ -12,6 +12,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxAudioPlayerModule } from 'ngx-audio-player';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatButtonModule } from '@angular/material/button';
+
 
 import { NgxWebstorageModule } from 'ngx-webstorage';
 import { AppRoutingModule } from './app-routing.module';
@@ -44,7 +46,8 @@ import { SetProfilePictureComponent } from './components/set-profile-picture/set
     UserProfileComponent,
     LoginComponent,
     SignupComponent,
-    SetProfilePictureComponent
+    SetProfilePictureComponent,
+    
 
   ],
   imports: [
@@ -70,6 +73,7 @@ import { SetProfilePictureComponent } from './components/set-profile-picture/set
       preventDuplicates: true,
     }),
     NgxWebstorageModule.forRoot(),
+    MatButtonModule
 
   ],
   providers: [

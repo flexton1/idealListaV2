@@ -12,8 +12,8 @@ const routes: Routes = [
 {path:'sign-up', component: SignupComponent},
 {path: 'login', component: LoginComponent},
 {path: '', component: BeginPageComponent},
-{path: 'user-profile/:name', component: UserProfileComponent, canActivate: [AuthGuard]},
-{path: 'audio', component: AudioPlayerComponent},
+{path: 'user-profile', component: UserProfileComponent, canActivate: [AuthGuard]},
+{path: 'audio/:playlist', component: AudioPlayerComponent},
 
 ];
 

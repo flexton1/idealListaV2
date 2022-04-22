@@ -32,7 +32,7 @@ export class NavbarComponent implements OnInit {
     }
 
     goToUserProfile() {
-      this.router.navigateByUrl('/user-profile/' + this.username);
+      this.router.navigateByUrl('/user-profile');
     }
 
 }
