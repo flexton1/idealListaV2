@@ -13,12 +13,14 @@ export class AudioPlayerComponent implements OnInit {
   constructor(private listService: ListServiceService,
               private route: ActivatedRoute ) { }
 
-  
+    playlistSearch: string = "";
   msaapPlaylist: Track[] = [];
  
   ngOnInit() {
+    this.playlistSearch = this.route.snapshot.params['playlist'];
+    // console.log(this.playlistSearch);
     this.listService.getSongs().subscribe(e => this.msaapPlaylist = e.filter(a => 
-      a.playlist !== this.route.snapshot.params['playlist'])
+      a.playlist !== this.playlistSearch)
       );
   }
 
