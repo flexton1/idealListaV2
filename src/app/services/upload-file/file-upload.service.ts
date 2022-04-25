@@ -7,8 +7,8 @@ import { HttpClient } from '@angular/common/http';
 export class FileUploadService {
 
   constructor(private _httpClient: HttpClient) { }
-  SERVER_URL: string = "http://localhost:8080/api/files/upload";
-  SERVER_URL_PICTURES: string = "http://localhost:8080/api/profileImages"
+  SERVER_URL: string = "https://ideallista-v2-spring.herokuapp.com/api/files/upload";
+  SERVER_URL_PICTURES: string = "https://ideallista-v2-spring.herokuapp.com/api/profileImages"
 
   public upload(formData: any, playlist: string) {
     console.log("upload service function is called")

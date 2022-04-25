@@ -8,7 +8,7 @@ import { Track } from '../components/audio-player/track';
 })
 export class ListServiceService {
 
-private getUrl: string = 'http://localhost:8080/api/files/files';
+private getUrl: string = 'https://ideallista-v2-spring.herokuapp.com/api/files/files';
 
 
   constructor(private _httpClient: HttpClient) { }
