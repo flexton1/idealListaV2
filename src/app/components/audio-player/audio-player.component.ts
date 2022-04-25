@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Track } from 'ngx-audio-player/lib/model/track.model';
 import { ListServiceService } from 'src/app/services/list-service.service';
-import { Track } from './track';
 
 @Component({
   selector: 'app-audio-player',
