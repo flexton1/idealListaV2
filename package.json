@@ -1,12 +1,17 @@
 {
   "name": "ideal-lista-v2",
   "version": "0.0.0",
+  "engines": {
+    "node": "16.x"
+  },
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "heroku-postbuild": "ng build --prod && npm install -g http-server-spa",
+    "start": "http-server-spa dist/ideallista-v2-angular index.html $PORT"
+   
   },
   "private": true,
   "dependencies": {
