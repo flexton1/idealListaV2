@@ -1,19 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { SignupRequestPayload } from './singup-request.payload';
 import { AuthService } from '../shared/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
 })
-export class SignupComponent implements OnInit {
+export class SignupComponent implements OnInit, OnDestroy {
 
   signupRequestPayload: SignupRequestPayload;
   signupForm!: FormGroup;
+
+  private _unsubscribeAll: Subject<void> = new Subject<void>();
 
   constructor(private authService: AuthService, private router: Router,
     private toastr: ToastrService) {
@@ -38,12 +41,19 @@ export class SignupComponent implements OnInit {
     this.signupRequestPayload.password = this.signupForm.get('password')!.value;
 
     this.authService.signup(this.signupRequestPayload)
-      .subscribe(data => {
+    .pipe(takeUntil(this._unsubscribeAll))  
+    .subscribe(data => {
         this.router.navigate(['/login'],
           { queryParams: { registered: 'true' } });
       }, error => {
         console.log(error);
         this.toastr.error('Registracija nije uspjela! Molimo, pokusajte ponovno');
       });
+  }
+
+
+  ngOnDestroy(): void {
+    this._unsubscribeAll.next();
+    this._unsubscribeAll.complete();
   }
 }

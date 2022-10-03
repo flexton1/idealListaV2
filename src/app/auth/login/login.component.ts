@@ -1,21 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { LoginRequestPayload } from './login-request.payload';
 import { AuthService } from '../shared/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
 
-  loginForm: FormGroup;
+  loginForm!: FormGroup;
   loginRequestPayload: LoginRequestPayload;
-  registerSuccessMessage: string;
-  isError: boolean;
+  registerSuccessMessage!: string;
+  isError!: boolean;
+  private _unsubscribeAll: Subject<void> = new Subject<void>();
 
   constructor(private authService: AuthService, private activatedRoute: ActivatedRoute,
     private router: Router, private toastr: ToastrService) {
@@ -54,6 +56,11 @@ export class LoginComponent implements OnInit {
       new Error(error);
     });
 
+  }
+
+  ngOnDestroy(): void {
+    this._unsubscribeAll.next();
+    this._unsubscribeAll.complete();
   }
 
 }

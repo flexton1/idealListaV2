@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Track } from 'ngx-audio-player';
+import { Subject, takeUntil } from 'rxjs';
 import { ListServiceService } from 'src/app/services/list-service.service';
 
 @Component({
@@ -9,6 +10,8 @@ import { ListServiceService } from 'src/app/services/list-service.service';
   styleUrls: ['./audio-player.component.scss']
 })
 export class AudioPlayerComponent implements OnInit {
+
+  private _unsubscribeAll: Subject<void> = new Subject<void>();
 
   constructor(private listService: ListServiceService,
               private route: ActivatedRoute ) { }
@@ -19,7 +22,9 @@ export class AudioPlayerComponent implements OnInit {
   ngOnInit() {
     this.playlistSearch = this.route.snapshot.params['playlist'];
     // console.log(this.playlistSearch);
-    this.listService.getSongs().subscribe(e => this.msaapPlaylist = e);
+    this.listService.getSongs()
+    .pipe(takeUntil(this._unsubscribeAll))
+    .subscribe(e => this.msaapPlaylist = e);
   }
 
   msaapDisplayTitle = true;
@@ -32,6 +37,9 @@ msaapDisplayDuration = false;
 msaapDisablePositionSlider = false;
    
 
-
+ngOnDestroy(): void {
+  this._unsubscribeAll.next();
+  this._unsubscribeAll.complete();
+}
 
 }
