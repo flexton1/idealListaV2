@@ -8,7 +8,7 @@ import { FileUploadService } from 'src/app/services/upload-file/file-upload.serv
 })
 export class FileUploadComponent implements OnInit {
 
-  @ViewChild("fileUpload", {static: false}) fileUpload: ElementRef;
+  @ViewChild("fileUpload", {static: false}) fileUpload!: ElementRef;
   files: any[]  = [];  
     fileName: any;
     addToPlaylist: string = "";
